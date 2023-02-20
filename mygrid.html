@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            max-width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        .head{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .head .sub{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .head .sub img{
+            width: 4rem;
+            height: 4rem;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
+        }
+
+        .card {
+            /* background-color: #0000aa; */
+            perspective: 1000px;
+            margin: .2rem;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            transition: all 1s ease;
+            transform-style: preserve-3d;
+        }
+
+        .front {
+            grid-area: 1 / 1;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            border: 2px solid black;
+        }
+
+        .front div {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .back {
+            grid-area: 1 / 1;
+            backface-visibility: hidden;
+        }
+
+        .card:hover .card-container {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="head">
+        <div class="name">Deergha</div>
+        <div class="sub">
+            <img src="./95458-funny.gif" alt="">
+            <h1>choose a number and click</h1>
+            <img src="./95458-funny.gif" alt="">
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./3.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./4.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./5.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./6.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./7.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./8.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./9.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-container">
+                <div class="front">
+                    <div class="joke"></div>
+                </div>
+                <div class="back">
+                    <img src="./10.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const fetchData = async () => {
+            const url = "https://hindi-jokes-api.onrender.com/jokes/10?api_key=e707883a92532dadcfe3b37e20aa"
+            const response = await fetch(url);
+            const data = await response.json();
+            const element = document.getElementsByClassName('joke')
+            for (i = 0; i < 10; i++) {
+                element[i].innerHTML=data.data[i].jokeContent;
+                console.log(data.data[i].jokeContent)
+            }
+        }
+        fetchData()
+    </script>
+</body>
+
+</html>
